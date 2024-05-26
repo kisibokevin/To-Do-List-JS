@@ -1,0 +1,102 @@
+Its functionality:
+
+window.onload = function() { loadTasks(); }
+Purpose: This ensures that the loadTasks function is called as soon as the window finishes loading. This is used to initialize the task list by loading any saved tasks from local storage when the page is first opened.
+
+function addTask() { ... }
+Purpose: Adds a new task to the list.
+
+Steps:
+1. Gets the value from the input field.
+2. Checks if the input is not empty.
+3. Retrieves the current list of tasks from local storage.
+4. Adds the new task to the list.
+5. Saves the updated list back to local storage.
+6. Clears the input field.
+7. Re-renders the task list.
+8. Updates the task count display.
+
+function getTasks() { ... }
+Purpose: Retrieves the list of tasks from local storage.
+
+Steps:
+1. Gets the tasks from local storage.
+2. Parses the tasks from JSON if they exist, otherwise returns an empty array.
+
+function saveTasks(tasks) { ... }
+Purpose: Saves the given list of tasks to local storage.
+
+Steps:
+1. Converts the tasks array to a JSON string.
+2. Stores the JSON string in local storage.
+
+function loadTasks() { ... }
+Purpose: Loads and displays the tasks when the page loads.
+
+Steps:
+1. Calls renderTasks to display the tasks.
+2. Calls updateTaskCount to update the task count display.
+
+function renderTasks() { ... }
+Purpose: Renders the tasks on the page.
+
+Steps:
+1. Retrieves the list of tasks from local storage.
+2. Clears the current tasks displayed in the task list element.
+3. Creates a list item for each task.
+4. Adds a delete button to each list item.
+5. Appends each list item to the task list element.
+
+function deleteTask(index) { ... }
+Purpose: Deletes a task at a given index from the list.
+
+Steps:
+1. Retrieves the current list of tasks from local storage.
+2. Removes the task at the specified index.
+3. Saves the updated list back to local storage.
+4. Re-renders the task list.
+5. Updates the task count display.
+
+function createDeleteButton(index) { ... }
+Purpose: Creates a delete button for a task.
+
+Steps:
+1. Creates a span element.
+2. Sets the inner HTML of the button to the multiplication sign (×).
+3. Adds an event listener to call deleteTask with the correct index when clicked.
+3. Returns the created button element.
+
+document.addEventListener('keydown', (e) => { ... })
+Purpose: Adds a task when the Enter key is pressed.
+
+Steps:
+1. Checks if the pressed key is 'Enter'.
+2. Calls the addTask function.
+
+let taskList = document.getElementById("tasksList");
+Purpose: Gets the task list element from the DOM.
+
+taskList.addEventListener("click", (e) => { ... }, false);
+Purpose: Handles clicks on the task list.
+
+Steps:
+1. Checks if a list item (li) was clicked, and toggles the "checked" class.
+2. Checks if a delete button (span) was clicked, and removes the task.
+3. Updates the task count display.
+
+function updateTaskCount() { ... }
+Purpose: Updates the display of the number of tasks remaining.
+
+Steps:
+1. Gets the number of child elements (tasks) in the task list.
+2. Updates the text content of the task count element to reflect the current number of tasks.
+
+
+Summary
+The code manages a to-do list by adding, deleting, and rendering tasks.
+Tasks are stored in and retrieved from local storage.
+The UI updates dynamically as tasks are added or removed.
+A task count is displayed and updated in real-time.
+Tasks can be marked as checked (completed) by clicking on them.
+Tasks can be deleted by clicking the delete button next to each task.
+New tasks can be added by pressing the Enter key.
